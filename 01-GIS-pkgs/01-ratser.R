@@ -1,3 +1,3 @@
-require(devtools)
+library(raster)
 
-install.packages
+raster('lu.img')
