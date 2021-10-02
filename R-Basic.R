@@ -1,4 +1,3 @@
-#
 # sprintf() : 문자열을 원하는 포맷으로 변환하여 출력하는 함수
 # sprintf("str", string value)
 args <- c("2021", "10", "2", "21")
