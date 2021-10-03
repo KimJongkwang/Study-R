@@ -41,4 +41,4 @@ y = points represented by a two-column matrix or data.frame,
     or a numeric vector representing cell numbers
 """
 ## extract
-head(extract(max_temp, max_temp_df, fun=z))
+extract(max_temp, max_temp_df, fun=z)
