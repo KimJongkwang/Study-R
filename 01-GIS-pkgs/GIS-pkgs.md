@@ -1,4 +1,4 @@
-## GIS R Packages
+# GIS R Packages
 
 GIS(Geographic Information System, 지리정보시스템)은 흔히 지도 데이터로써 통용되며, 위치속성이 포함된 정보 데이터라 생각됩니다.
 
@@ -7,12 +7,12 @@ GIS는 보통 `위치정보를 가진 공간자료`와 `공간의 속성을 담�
 데이터의 형태로는 크게 벡터(vector)와 래스터(raster)로 구분됩니다.
 - 벡터(vector) : 점(point), 선(line), 면(polygon)으로 이루어진 레이어
     - shp, geojson, kml, gml 등의 포맷
-- 래스터(raster) : 그리드(grid) 또는 픽셀(pixel)과 같이 
+- 래스터(raster) : 그리드(grid) 또는 픽셀(pixel) 단위의 이미지 레이어
     - img, tiff, jpeg2000 등과 같이 이미지 또는 영상의 파일 포맷
 
 > https://ko.wikipedia.org/wiki/%EC%A7%80%EB%A6%AC_%EC%A0%95%EB%B3%B4_%EC%8B%9C%EC%8A%A4%ED%85%9C
 
-### Pre-requirements
+## Pre-requirements
 
 위의 GIS를 다루기 위해 R에서는 rgdal, raster, sp, sf 등 여러 패키지를 제공합니다.
 
@@ -27,47 +27,10 @@ GIS는 보통 `위치정보를 가진 공간자료`와 `공간의 속성을 담�
 
 위의 소프트웨어는 R 패키지 뿐만 아니라 python 공간처리 패키지, 더 나아가 PostGIS 등 거의 대다수의 공간정보 툴에 필요로 합니다.
 
-### Index
+## Index
 
-- vector
+- vector-data-processing
 - raster
 - sf, sp
+----------------------------------
 
-
-### vector-data-processing
-
-#### Load vector layer
-
-벡터 레이어를 불러올때는 `rgdal::readOGR()`를 사용합니다.
-
-use_iconv 옵션을 TRUE를 줄 시에는 encoding 옵션의 encoding을 시스템 encoding으로 변환시켜줍니다.
-
-```R
-library(rgdal)
-
-shp <- readOGR("sc_grid.shp", use_iconv=TRUE, encoding='UTF-8')
-# shp <- readOGR(dsn=".", layer="sc_grid", use_iconv=TRUE, encoding='UTF-8')>
-```
-
-#### vector layer structure
-```R
-class(shp)
-```
-```SHELL
-[1] "SpatialPolygonsDataFrame"
-attr(,"package")
-[1] "sp"
-```
-
-```
-
-
-
-str(shp)
-```
-
-
-
-```
-## [1]
-```
