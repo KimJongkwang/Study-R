@@ -1,4 +1,4 @@
-# GIS R Packages
+# GIS Introduction
 
 GIS(Geographic Information System, 지리정보시스템)은 흔히 지도 데이터로써 통용되며, 위치속성이 포함된 정보 데이터라 생각됩니다.
 
@@ -29,8 +29,8 @@ GIS는 보통 `위치정보를 가진 공간자료`와 `공간의 속성을 담�
 
 ## Index
 
-- vector-data-processing
-- raster
-- sf, sp
+- <a link=".vector-processing.md"> vector-processing<a>
+<!-- - raster -->
+<!-- - sf, sp -->
 ----------------------------------
 

@@ -8,6 +8,8 @@
     - 좌표계 변환
     - 속성정보 추가하기
 
+- 공간 처리 기능
+
 ## 기본 기능
 
 ### 벡터 레이어 읽기
@@ -72,3 +74,6 @@ shp_4326 <- spTransform(shp,CRS("+proj=longlat +ellps=WGS84 +datum=WGS84"))
 ```
 shp@data$new_val <- 0
 ```
+----------------------------
+
+
