@@ -2,15 +2,15 @@
 # vector-data-processing
 
 ## Index
-- basic function
-    - load vector layer
-    - vector layer structure
-    - transform projection
-    - add attribute
+- 기본 기능
+    - 벡터 레이어 읽기
+    - 벡터 레이어 구조(sp)
+    - 좌표계 변환
+    - 속성정보 추가하기
 
-## basic function
+## 기본 기능
 
-### load vector layer
+### 벡터 레이어 읽기
 
 벡터 레이어를 불러올때는 `rgdal::readOGR()`를 사용합니다.
 
@@ -25,7 +25,7 @@ shp <- readOGR("sc_grid.shp", use_iconv=TRUE, encoding='UTF-8')
 # shp <- readOGR(dsn=".", layer="sc_grid", use_iconv=TRUE, encoding='UTF-8')>
 ```
 
-### vector layer structure
+### 벡터 레이어 구조
 ```R
 class(shp)
 ```
@@ -51,7 +51,7 @@ str로 구조를 확인하면, sp 데이터에는 @ 로 구분된 slot이 있습
  - @ proj4string : CRS class로 레이어의 좌표계입니다.
 
 
-### transform projection
+### 좌표계 변환
 
 GIS 자료를 처리할 경우 기본으로 사용하는 기능이라고 생각됩니다. 단일 자료만을 분석한다면 상관없겠지만, 다수의 공간자료를 처리할 때 좌표를 맞추어야 공간적인 처리가 가능합니다.
 
@@ -61,7 +61,7 @@ GIS 자료를 처리할 경우 기본으로 사용하는 기능이라고 생각�
 shp_4326 <- spTransform(shp,CRS("+proj=longlat +ellps=WGS84 +datum=WGS84"))
 ```
 
-### add attribute
+### 속성정보 추가하기
 
 벡터 레이어에 속성정보를 추가할 수 있습니다. 
 
