@@ -106,6 +106,6 @@ s <- raster(nrow=10, ncol=10)
 s <- resample(r, s, method='bilinear') # 이중선형보간
 ```
 
-> refer 
+## refer 
 > rdocumentation : https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/interpolate
 > rdocumentation : https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/resample
