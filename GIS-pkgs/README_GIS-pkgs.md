@@ -29,9 +29,8 @@ GIS는 보통 `위치정보를 가진 공간자료`와 `공간의 속성을 담�
 
 ## Index
 
-- [vector-processing][vector-processing-link]
-
-[vector-processing-link]: https://github.com/KimJongkwang/Study-R/blob/main/01-GIS-pkgs/vector-processing.md
+- [vector-processing](https://github.com/KimJongkwang/Study-R/blob/main/01-GIS-pkgs/vector-processing.md)
+- [raster-processing](https://github.com/KimJongkwang/Study-R/blob/main/01-GIS-pkgs/raster-processing.md)
 
 <!-- - raster -->
 <!-- - sf, sp -->
