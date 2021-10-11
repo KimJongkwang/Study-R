@@ -9,7 +9,7 @@ R 기초 문법이 아닌 주로 패키지와 관련한 메서드 사용법에 �
 
 ## INDEX
 
-### [GIS](https://github.com/KimJongkwang/Study-R/blob/main/01-GIS-pkgs/README_GIS-pkgs.md)
+### [GIS](https://github.com/KimJongkwang/Study-R/blob/main/GIS/README_GIS.md)
 시작은 현재 업무에서 가장 주요하게 사용하는 GIS 관련 내용을 다루겠습니다.
 
 - vector-layer-processing
