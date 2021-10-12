@@ -6,13 +6,13 @@
     - 래스터 레이어 읽기
     - 래스터 레이어 구조(sp)
     - 좌표계 변환
-    - 속성정보 추가하기
+    - 래스터 값 추출하기
 
 - 공간처리
     - 공간상세화(up-scaling)
     - 
 
-## 공간처리
+## 기본 기능
 
 ### 래스터 레이어 읽기
 
@@ -42,10 +42,32 @@ values     : 24.2002, 33.19905  (min, max) # 데이터(band) 최솟값/최댓값
 
 ### 좌표 변환
 
-래스터에서는 raster::projectRaster()를 사용 할 수 있다.
+래스터에서는 raster::projectRaster()를 사용 할 수 있습니다.
 ```R
 raster::projectRaster("raster file", crs="+proj=longlat +ellps=WGS84 +datum=WGS84")
 ```
+
+### 래스터 값 추출하기
+
+값을 추출하는데는 `raster::extract()` 메서드를 사용합니다.
+공식 문서에서 확인할 수 있듯이, 래스터 객체를 각 셀 중심 포인트에 해당하는 좌표값을 가진 매트릭스나 데이터프레임에 채워 넣을 수 있습니다.
+
+```
+Extract values from Raster objects
+raster::extract(x, y, *args...)
+x = Raster object
+y = points represented by a two-column matrix or data.frame, 
+    or SpatialPoints*; SpatialPolygons*; SpatialLines; sf spatial vector objects; Extent; 
+    or a numeric vector representing cell numbers
+```
+
+```R
+## extract
+extract(max_temp, max_temp_df, fun=z)
+
+```
+
+## 공간처리
 
 ### 공간상세화(Up-Scaling)
 
