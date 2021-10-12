@@ -130,4 +130,5 @@ s <- resample(r, s, method='bilinear') # 이중선형보간
 
 ## refer 
 > rdocumentation : https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/interpolate
+
 > rdocumentation : https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/resample
