@@ -10,7 +10,7 @@
 
 - 공간처리
     - 공간상세화(up-scaling)
-    - 
+
 
 ## 기본 기능
 
@@ -128,7 +128,43 @@ s <- raster(nrow=10, ncol=10)
 s <- resample(r, s, method='bilinear') # 이중선형보간
 ```
 
-## refer 
-> rdocumentation : https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/interpolate
+`raster` 패키지가 아니지만, 마찬가지로 보간에 쓰이는 패키지도 함께 소개합니다. 
 
-> rdocumentation : https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/resample
+### `pracma::interp2()`
+
+공식 도큐먼트에서는 2차원의 데이터 보간법이라고 설명합니다. 
+
+*interp2: Two-dimensional Data Interpolation*
+
+아래와 같이 사용하며, 각 5개의 파라미터가 요구됩니다.
+
+`interp2(x, y, Z, xp, yp, method = c("linear", "nearest", "constant"))`
+
+- x, y : z값을 가지는 x, y 좌표 벡터
+- Z : x, y의 매트릭스
+- xp, yp : 보간 대상의 x, y 좌표 벡터
+- method : 보간방법론(linear, 선형보간을 주로 사용)
+
+```R
+x <- linspace(-1, 1, 11)
+y <- linspace(-1, 1, 11)
+mgrid <- meshgrid(x, y)
+Z <- mgrid$X^2 + mgrid$Y^2
+xp <- yp <- linspace(-1, 1, 101)
+method <- "linear"
+zp <- interp2(x, y, Z, xp, yp, method)
+plot(xp, zp, type = "l", col = "blue")
+method = "nearest"
+zp <- interp2(x, y, Z, xp, yp, method)
+lines(xp, zp, col = "red")
+grid()## End(Not run)
+```
+
+
+
+
+
+## refer 
+> https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/interpolate
+> https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/resample
+> https://www.rdocumentation.org/packages/pracma/versions/1.9.9/topics/interp2
