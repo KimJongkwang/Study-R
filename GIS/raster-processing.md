@@ -6,13 +6,13 @@
     - 래스터 레이어 읽기
     - 래스터 레이어 구조(sp)
     - 좌표계 변환
-    - 속성정보 추가하기
+    - 래스터 값 추출하기
 
 - 공간처리
     - 공간상세화(up-scaling)
-    - 
 
-## 공간처리
+
+## 기본 기능
 
 ### 래스터 레이어 읽기
 
@@ -42,10 +42,32 @@ values     : 24.2002, 33.19905  (min, max) # 데이터(band) 최솟값/최댓값
 
 ### 좌표 변환
 
-래스터에서는 raster::projectRaster()를 사용 할 수 있다.
+래스터에서는 raster::projectRaster()를 사용 할 수 있습니다.
 ```R
 raster::projectRaster("raster file", crs="+proj=longlat +ellps=WGS84 +datum=WGS84")
 ```
+
+### 래스터 값 추출하기
+
+값을 추출하는데는 `raster::extract()` 메서드를 사용합니다.
+공식 문서에서 확인할 수 있듯이, 래스터 객체를 각 셀 중심 포인트에 해당하는 좌표값을 가진 매트릭스나 데이터프레임에 채워 넣을 수 있습니다.
+
+```
+Extract values from Raster objects
+raster::extract(x, y, *args...)
+x = Raster object
+y = points represented by a two-column matrix or data.frame, 
+    or SpatialPoints*; SpatialPolygons*; SpatialLines; sf spatial vector objects; Extent; 
+    or a numeric vector representing cell numbers
+```
+
+```R
+## extract
+extract(max_temp, max_temp_df, fun=z)
+
+```
+
+## 공간처리
 
 ### 공간상세화(Up-Scaling)
 
@@ -106,6 +128,43 @@ s <- raster(nrow=10, ncol=10)
 s <- resample(r, s, method='bilinear') # 이중선형보간
 ```
 
+`raster` 패키지가 아니지만, 마찬가지로 보간에 쓰이는 패키지도 함께 소개합니다. 
+
+### `pracma::interp2()`
+
+공식 도큐먼트에서는 2차원의 데이터 보간법이라고 설명합니다. 
+
+*interp2: Two-dimensional Data Interpolation*
+
+아래와 같이 사용하며, 각 5개의 파라미터가 요구됩니다.
+
+`interp2(x, y, Z, xp, yp, method = c("linear", "nearest", "constant"))`
+
+- x, y : z값을 가지는 x, y 좌표 벡터
+- Z : x, y의 매트릭스
+- xp, yp : 보간 대상의 x, y 좌표 벡터
+- method : 보간방법론(linear, 선형보간을 주로 사용)
+
+```R
+x <- linspace(-1, 1, 11)
+y <- linspace(-1, 1, 11)
+mgrid <- meshgrid(x, y)
+Z <- mgrid$X^2 + mgrid$Y^2
+xp <- yp <- linspace(-1, 1, 101)
+method <- "linear"
+zp <- interp2(x, y, Z, xp, yp, method)
+plot(xp, zp, type = "l", col = "blue")
+method = "nearest"
+zp <- interp2(x, y, Z, xp, yp, method)
+lines(xp, zp, col = "red")
+grid()## End(Not run)
+```
+
+
+
+
+
 ## refer 
-> rdocumentation : https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/interpolate
-> rdocumentation : https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/resample
+> https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/interpolate
+> https://www.rdocumentation.org/packages/raster/versions/3.4-13/topics/resample
+> https://www.rdocumentation.org/packages/pracma/versions/1.9.9/topics/interp2
